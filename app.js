@@ -22,6 +22,7 @@ app.post('/validate', function(req,res){
   })
   .catch(err => 
     console.log(err));
+    res.send("Bad Domain");
 });
 
 app.listen(3000, function () {
