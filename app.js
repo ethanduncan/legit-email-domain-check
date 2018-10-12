@@ -22,7 +22,6 @@ app.post('/validate', function(req,res){
   })
   .catch(err => 
     console.log(err));
-    res.status(400).end();
 });
 
 app.listen(3000, function () {
