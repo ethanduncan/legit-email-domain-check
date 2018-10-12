@@ -20,7 +20,9 @@ app.post('/validate', function(req,res){
     res.type('json')
     res.send(JSON.stringify(result));
   })
-  .catch(err => console.log(err));
+  .catch(err => 
+    console.log(err));
+    res.status(400).end();
 });
 
 app.listen(3000, function () {
