@@ -12,17 +12,19 @@ app.get('/healthcheck', function (req, res) {
 });
 
 app.post('/validate', function(req,res){
-    var email = req.body.email;
+   var email = req.body.email;
     legit(email)
   .then(result => {
     result.isValid ? console.log("Valid!") : console.log("Invalid!");
     console.log(JSON.stringify(result));
-    res.type('json')
-    res.send(JSON.stringify(result));
+    res.status(200).send({result:"Good Domain"});
+    return;
   })
-  .catch(err => 
-    console.log(err));
-    res.send("Bad Domain");
+  .catch(function (err) {
+    console.log(err);
+    res.status(400).send({error: "Bad Domain"});
+    return;
+  })
 });
 
 app.listen(3000, function () {
